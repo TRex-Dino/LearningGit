@@ -12,11 +12,10 @@ struct HomeView: View {
 
     var body: some View {
         NavigationView {
-            List(viewModel.lessons) { lesson in
-                NavigationLink(destination: LessonDetailView(lesson: lesson)) {
+            List(viewModel.modules) { module in
+                NavigationLink(destination: HomeDetailView(module: module)) {
                     VStack(alignment: .leading) {
-                        Text(lesson.title).font(.headline)
-                        Text(lesson.description).font(.subheadline).foregroundColor(.gray)
+                        Text(module.currentModule.rawValue).font(.headline)
                     }
                 }
             }
