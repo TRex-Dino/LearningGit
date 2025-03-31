@@ -25,6 +25,16 @@ struct BeginnerLessonDetailView: View {
         switch lesson.currentLesson {
         case .text:
             TextBootcamp()
+        case .shapes:
+            ShapesBootcamp()
+        case .gradients:
+            GradientsBootcamp()
+        case .icons:
+            IconsBootcamp()
+        case .frames:
+            FrameBootcamp()
+        case .overlayAndBackground:
+            OverlayAndBackgroundBootcamp()
         }
     }
 }

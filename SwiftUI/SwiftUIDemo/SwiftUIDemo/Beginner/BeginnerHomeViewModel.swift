@@ -17,7 +17,12 @@ class BeginnerHomeViewModel: ObservableObject {
 
     private func loadLessons() {
         lessons = [
-            BeginnerLesson(id: UUID(), currentLesson: .text)
+            BeginnerLesson(id: UUID(), currentLesson: .text),
+            BeginnerLesson(id: UUID(), currentLesson: .shapes),
+            BeginnerLesson(id: UUID(), currentLesson: .gradients),
+            BeginnerLesson(id: UUID(), currentLesson: .icons),
+            BeginnerLesson(id: UUID(), currentLesson: .frames),
+            BeginnerLesson(id: UUID(), currentLesson: .overlayAndBackground),
         ]
     }
 }
