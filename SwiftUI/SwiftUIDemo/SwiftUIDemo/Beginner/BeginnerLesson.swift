@@ -21,6 +21,7 @@ struct BeginnerLesson: Identifiable {
         case .overlayAndBackground: "Overlay & Background"
         case .stacks: "Stacks"
         case .padding: "Padding"
+        case .spacer: "Spacer"
         }
     }
 
@@ -34,6 +35,7 @@ struct BeginnerLesson: Identifiable {
         case .overlayAndBackground: "Overlay & Background"
         case .stacks: "Stacks - VStack, HStack, ZStack"
         case .padding: "Padding"
+        case .spacer: "Spacer"
         }
     }
     
@@ -46,5 +48,6 @@ struct BeginnerLesson: Identifiable {
         case overlayAndBackground
         case stacks
         case padding
+        case spacer
     }
 }

@@ -39,6 +39,8 @@ struct BeginnerLessonDetailView: View {
             StacksBootcamp()
         case .padding:
             PaddingBootcamp()
+        case .spacer:
+            SpacerBootcamp()
         }
     }
 }
