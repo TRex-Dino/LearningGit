@@ -125,35 +125,6 @@ struct IconsBootcamp: View {
     }
 }
 
-
-
-
-extension Image {
-    func applyRenderingMode(_ mode: IconsBootcamp.SymbolMode) -> Image {
-        switch mode {
-        case .palette:
-            return self.symbolRenderingMode(.palette)
-        case .monochrome:
-            return self.symbolRenderingMode(.monochrome)
-        case .original:
-            return self.renderingMode(.original)
-        }
-    }
-}
-
-extension View {
-    @ViewBuilder
-    func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
-        if condition {
-            transform(self)
-        } else {
-            self
-        }
-    }
-}
-
-
-
 struct IconsBootcamp_Previews: PreviewProvider {
     static var previews: some View {
         IconsBootcamp()
