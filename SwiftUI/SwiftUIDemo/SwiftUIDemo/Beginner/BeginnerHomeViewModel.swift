@@ -23,6 +23,8 @@ class BeginnerHomeViewModel: ObservableObject {
             BeginnerLesson(id: UUID(), currentLesson: .icons),
             BeginnerLesson(id: UUID(), currentLesson: .frames),
             BeginnerLesson(id: UUID(), currentLesson: .overlayAndBackground),
+            BeginnerLesson(id: UUID(), currentLesson: .stacks),
+            BeginnerLesson(id: UUID(), currentLesson: .padding),
         ]
     }
 }

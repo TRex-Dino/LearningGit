@@ -35,6 +35,10 @@ struct BeginnerLessonDetailView: View {
             FrameBootcamp()
         case .overlayAndBackground:
             OverlayAndBackgroundBootcamp()
+        case .stacks:
+            StacksBootcamp()
+        case .padding:
+            PaddingBootcamp()
         }
     }
 }

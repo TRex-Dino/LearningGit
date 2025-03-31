@@ -19,6 +19,8 @@ struct BeginnerLesson: Identifiable {
         case .icons: "Icons"
         case .frames: "Frames"
         case .overlayAndBackground: "Overlay & Background"
+        case .stacks: "Stacks"
+        case .padding: "Padding"
         }
     }
 
@@ -30,6 +32,8 @@ struct BeginnerLesson: Identifiable {
         case .icons: "Icons - Image, Symbol"
         case .frames: "Frames leading, trailing, top, bottom, minSize, maxSize"
         case .overlayAndBackground: "Overlay & Background"
+        case .stacks: "Stacks - VStack, HStack, ZStack"
+        case .padding: "Padding"
         }
     }
     
@@ -40,5 +44,7 @@ struct BeginnerLesson: Identifiable {
         case icons
         case frames
         case overlayAndBackground
+        case stacks
+        case padding
     }
 }
