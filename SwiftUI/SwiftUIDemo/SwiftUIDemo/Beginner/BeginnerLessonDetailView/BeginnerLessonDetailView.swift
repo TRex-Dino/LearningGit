@@ -43,6 +43,8 @@ struct BeginnerLessonDetailView: View {
             SpacerBootcamp()
         case .scrollView:
             ScrollViewBootcamp()
+        case .lazyGrid:
+            GridBootcamp()
         }
     }
 }

@@ -23,6 +23,7 @@ struct BeginnerLesson: Identifiable {
         case .padding: "Padding"
         case .spacer: "Spacer"
         case .scrollView: "ScrollView"
+        case .lazyGrid: "Lazy Grid"
         }
     }
 
@@ -38,6 +39,7 @@ struct BeginnerLesson: Identifiable {
         case .padding: "Padding"
         case .spacer: "Spacer"
         case .scrollView: "ScrollView"
+        case .lazyGrid: "Grid - LazyVGrid, LazyHGrid"
         }
     }
     
@@ -52,5 +54,6 @@ struct BeginnerLesson: Identifiable {
         case padding
         case spacer
         case scrollView
+        case lazyGrid
     }
 }
