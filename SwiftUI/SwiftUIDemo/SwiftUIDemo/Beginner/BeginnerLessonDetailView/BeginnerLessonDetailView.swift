@@ -41,6 +41,8 @@ struct BeginnerLessonDetailView: View {
             PaddingBootcamp()
         case .spacer:
             SpacerBootcamp()
+        case .scrollView:
+            ScrollViewBootcamp()
         }
     }
 }

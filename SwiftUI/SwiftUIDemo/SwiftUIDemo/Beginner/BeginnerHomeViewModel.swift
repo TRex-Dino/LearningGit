@@ -26,6 +26,7 @@ class BeginnerHomeViewModel: ObservableObject {
             BeginnerLesson(id: UUID(), currentLesson: .stacks),
             BeginnerLesson(id: UUID(), currentLesson: .padding),
             BeginnerLesson(id: UUID(), currentLesson: .spacer),
+            BeginnerLesson(id: UUID(), currentLesson: .scrollView),
         ]
     }
 }

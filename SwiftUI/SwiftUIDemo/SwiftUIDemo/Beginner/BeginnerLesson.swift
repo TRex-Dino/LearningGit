@@ -22,6 +22,7 @@ struct BeginnerLesson: Identifiable {
         case .stacks: "Stacks"
         case .padding: "Padding"
         case .spacer: "Spacer"
+        case .scrollView: "ScrollView"
         }
     }
 
@@ -36,6 +37,7 @@ struct BeginnerLesson: Identifiable {
         case .stacks: "Stacks - VStack, HStack, ZStack"
         case .padding: "Padding"
         case .spacer: "Spacer"
+        case .scrollView: "ScrollView"
         }
     }
     
@@ -49,5 +51,6 @@ struct BeginnerLesson: Identifiable {
         case stacks
         case padding
         case spacer
+        case scrollView
     }
 }
