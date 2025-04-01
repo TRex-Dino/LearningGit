@@ -84,8 +84,6 @@ struct IconsBootcamp: View {
             }
             .padding()
         }
-        .navigationTitle("Icons")
-        .navigationBarTitleDisplayMode(.inline)
     }
 
     @ViewBuilder

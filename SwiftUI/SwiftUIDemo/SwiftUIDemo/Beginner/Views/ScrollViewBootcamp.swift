@@ -54,8 +54,6 @@ struct ScrollViewBootcamp: View {
                     .padding()
             }
         }
-        .navigationTitle("ScrollView")
-        .navigationBarTitleDisplayMode(.inline)
     }
 
     // MARK: - Helpers

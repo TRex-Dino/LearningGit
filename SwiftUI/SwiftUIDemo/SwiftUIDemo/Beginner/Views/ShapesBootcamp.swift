@@ -110,8 +110,6 @@ struct ShapesBootcamp: View {
             }
             .padding()
         }
-        .navigationTitle("Shapes")
-        .navigationBarTitleDisplayMode(.inline)
     }
 
     @ViewBuilder
