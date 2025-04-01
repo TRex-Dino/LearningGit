@@ -5,7 +5,6 @@
 //  Created by Menkov Dmitriy on 01.04.2025.
 //
 
-import Foundation
 import SwiftUI
 
 struct SafeAreaBootcamp: View {

@@ -1353,3 +1353,170 @@ VStack {
 
 ---
 
+# 📘 Теория по `Button` в SwiftUI
+
+---
+
+## 🔹 Что такое `Button`
+
+`Button` — это интерактивный компонент в SwiftUI, который запускает **действие по нажатию**. Его визуальное представление может быть любым `View`.
+
+---
+
+## ✅ Базовые формы
+
+### 1. **Текстовая кнопка**
+```swift
+Button("Нажми меня") {
+    print("Нажато")
+}
+```
+
+- Самый простой вид
+- Без кастомизации
+
+---
+
+### 2. **Кастомная кнопка с `Text` и фоном**
+```swift
+Button(action: {
+    print("Тап")
+}) {
+    Text("Tap me")
+        .padding()
+        .background(Color.blue)
+        .foregroundColor(.white)
+        .cornerRadius(8)
+}
+```
+
+- Кнопка может выглядеть как угодно
+- Главное — **всё, что внутри `Button {}`**, это тело кнопки (View)
+
+---
+
+### 3. **Кнопка с иконкой**
+```swift
+Button {
+    print("Иконка нажата")
+} label: {
+    Image(systemName: "heart.fill")
+        .font(.title)
+        .foregroundStyle(.red)
+}
+```
+
+---
+
+## 🧩 Состояние с `@State`
+
+Ты можешь изменять переменные в `@State` при нажатии:
+
+```swift
+@State private var isLiked = false
+
+Button {
+    isLiked.toggle()
+} label: {
+    Image(systemName: isLiked ? "heart.fill" : "heart")
+}
+```
+
+---
+
+## 🔥 Анимации
+
+```swift
+withAnimation {
+    isExpanded.toggle()
+}
+```
+
+Работает прямо внутри `Button`, оборачивая `action`.
+
+---
+
+## 🎨 Стилизация и `buttonStyle(...)`
+
+SwiftUI предоставляет несколько встроенных стилей:
+
+### ✅ `.bordered()`, `.borderedProminent()`, `.plain()`
+
+```swift
+Button("Delete", action: delete)
+    .buttonStyle(.bordered)
+
+Button("Save", action: save)
+    .buttonStyle(.borderedProminent)
+```
+
+---
+
+### ✅ Кастомный стиль через `ButtonStyle`
+
+Ты можешь создать свой стиль:
+
+```swift
+struct MyButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(configuration.isPressed ? Color.gray : Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+            .scaleEffect(configuration.isPressed ? 0.95 : 1)
+    }
+}
+```
+
+Использование:
+
+```swift
+Button("Custom") {
+    print("Нажато")
+}
+.buttonStyle(MyButtonStyle())
+```
+
+---
+
+## 🧠 Поведение
+
+- `Button` **анимируется сам** при нажатии (в `isPressed`)
+- Может использоваться внутри `List`, `Form`, `NavigationStack`
+- Можно оборачивать в `.disabled(...)` или `.opacity(...)`
+
+---
+
+## 👀 Accessibility
+
+- SwiftUI автоматически добавляет `accessibilityLabel`, если в кнопке есть `Text` или `Image(systemName:)`
+- Ты можешь указать вручную:
+```swift
+.accessibilityLabel("Лайкнуть")
+.accessibilityHint("Нажмите, чтобы поставить лайк")
+```
+
+---
+
+## 🧪 Кнопка может быть любой View:
+
+```swift
+Button {
+    print("🔥")
+} label: {
+    ZStack {
+        Circle().fill(.pink).frame(width: 80, height: 80)
+        Image(systemName: "flame.fill").font(.title).foregroundStyle(.white)
+    }
+}
+```
+
+---
+
+## 🧱 Когда НЕ использовать `Button`
+
+- Не используй, если у тебя **нет интерактивного действия** — тогда лучше `Text`, `Image`, `Label`
+- Не оборачивай `Button` внутри `NavigationLink` — это может вызывать конфликты
+
+---
