@@ -7,107 +7,107 @@
 
 import SwiftUI
 
-struct AnimationBootcamp: View {
-    @State var isAnimated = false
+struct AnimationsBootcamp: View {
+    @State private var isAnimated = false
+    @State private var showBox = false
+    @State private var useWithAnimation = false
+    @State private var selectedAnimation: AnimationType = .default
 
     var body: some View {
-        VStack {
-            Button("Button") {
-//                withAnimation(.default) {
-//
-//                    isAnimated.toggle()
-//                }
-                isAnimated.toggle()
+        VStack(spacing: 30) {
+            Picker("Анимация", selection: $selectedAnimation) {
+                ForEach(AnimationType.allCases) { anim in
+                    Text(anim.rawValue).tag(anim)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding(.horizontal)
+
+            Toggle("Использовать withAnimation()", isOn: $useWithAnimation)
+                .padding(.horizontal)
+
+            Button("Toggle") {
+                if useWithAnimation {
+                    withAnimation(selectedAnimation.value) {
+                        isAnimated.toggle()
+                    }
+                } else {
+                    isAnimated.toggle()
+                }
             }
 
             Spacer()
 
-            RoundedRectangle(cornerRadius: isAnimated ? 50 : 25)
-                .fill(isAnimated ? Color.red : Color.green)
+            RoundedRectangle(cornerRadius: isAnimated ? 50 : 15)
+                .fill(isAnimated ? .red : .green)
                 .frame(
                     width: isAnimated ? 100 : 300,
                     height: isAnimated ? 100 : 300
                 )
+                .scaleEffect(isAnimated ? 1.3 : 1)
                 .offset(y: isAnimated ? 100 : 0)
-                .animation(.default, value: isAnimated) // or we can use this instead
+                .rotationEffect(.degrees(isAnimated ? 180 : 0))
+                .animation(selectedAnimation.value, value: isAnimated)
 
             Spacer()
-        }
-    }
-}
 
-struct AnimationTimingBootcamp: View {
-    @State var isAnimated = false
-    let timing: Double = 10
-
-    var body: some View {
-        VStack {
-            Button("Button") {
-                isAnimated.toggle()
-            }
-
-            RoundedRectangle(cornerRadius: 20)
-                .frame(width: isAnimated ? 350 : 50, height: 100)
-                .animation(
-                    .spring(
-                        response: 2,
-                        dampingFraction: 0.2,
-                        blendDuration: 1
-                    ),
-                    value: isAnimated
-                )
-
-//            RoundedRectangle(cornerRadius: 20)
-//                .frame(width: isAnimated ? 350 : 50, height: 100)
-//                .animation(.linear(duration: timing), value: isAnimated)
-
-//            RoundedRectangle(cornerRadius: 20)
-//                .frame(width: isAnimated ? 350 : 50, height: 100)
-//                .animation(.easeIn(duration: timing), value: isAnimated)
-//
-//            RoundedRectangle(cornerRadius: 20)
-//                .frame(width: isAnimated ? 350 : 50, height: 100)
-//                .animation(.easeOut(duration: timing), value: isAnimated)
-//
-//            RoundedRectangle(cornerRadius: 20)
-//                .frame(width: isAnimated ? 350 : 50, height: 100)
-//                .animation(.easeInOut(duration: timing), value: isAnimated)
-        }
-    }
-}
-
-struct AnimationTransitionBootcamp: View {
-    @State var showView = false
-
-    var body: some View {
-        ZStack(alignment: .bottom) {
-            VStack {
-                Button("Button") {
-                    showView.toggle()
+            Button("Показать / скрыть блок с transition") {
+                if useWithAnimation {
+                    withAnimation(.easeInOut) {
+                        showBox.toggle()
+                    }
+                } else {
+                    showBox.toggle()
                 }
-                Spacer()
             }
 
-            if showView {
-                RoundedRectangle(cornerRadius: 30)
-                    .frame(height: UIScreen.main.bounds.height * 0.5)
-//                    .transition(.slide)
-//                    .transition(.move(edge: .bottom))
+            if showBox {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.blue)
+                    .frame(height: 200)
+                    .padding(.horizontal)
                     .transition(
                         .asymmetric(
                             insertion: .move(edge: .leading),
-                            removal: .move(edge: .bottom)
+                            removal: .opacity
                         )
                     )
-                    .animation(.easeInOut) // change this to new ios 15, but slide does not work
+                    .animation(.easeInOut, value: showBox)
             }
         }
-        .ignoresSafeArea(edges: .bottom)
+        .padding()
+        .navigationTitle("Анимации")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
+enum AnimationType: String, CaseIterable, Identifiable {
+    case `default`, easeIn, easeOut, easeInOut, linear, spring
+
+    var id: String { rawValue }
+
+    var value: Animation {
+        switch self {
+        case .default:
+            return .default
+        case .easeIn:
+            return .easeIn(duration: 1)
+        case .easeOut:
+            return .easeOut(duration: 1)
+        case .easeInOut:
+            return .easeInOut(duration: 1)
+        case .linear:
+            return .linear(duration: 1)
+        case .spring:
+            return .spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.3)
+        }
+    }
+}
+
+
+
 struct AnimationBootcamp_Previews: PreviewProvider {
     static var previews: some View {
-        AnimationTransitionBootcamp()
+        AnimationsBootcamp()
     }
 }

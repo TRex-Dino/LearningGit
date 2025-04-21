@@ -45,6 +45,8 @@ struct BeginnerLessonDetailView: View {
             ScrollViewBootcamp()
         case .lazyGrid:
             GridBootcamp()
+        case .animations:
+            AnimationsBootcamp()
         }
     }
 }
