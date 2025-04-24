@@ -25,6 +25,7 @@ struct BeginnerLesson: Identifiable {
         case .scrollView: "ScrollView"
         case .lazyGrid: "Lazy Grid"
         case .animations: "Animations"
+        case .presentation: "Presentation"
         }
     }
 
@@ -42,6 +43,7 @@ struct BeginnerLesson: Identifiable {
         case .scrollView: "ScrollView"
         case .lazyGrid: "Grid - LazyVGrid, LazyHGrid"
         case .animations: "Animations - Transition, Timing"
+        case .presentation: "Presentation - Sheet, FullScreenCover"
         }
     }
     
@@ -58,5 +60,6 @@ struct BeginnerLesson: Identifiable {
         case scrollView
         case lazyGrid
         case animations
+        case presentation
     }
 }
