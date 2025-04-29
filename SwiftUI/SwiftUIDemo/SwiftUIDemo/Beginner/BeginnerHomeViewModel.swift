@@ -30,6 +30,7 @@ class BeginnerHomeViewModel: ObservableObject {
             BeginnerLesson(id: UUID(), currentLesson: .lazyGrid),
             BeginnerLesson(id: UUID(), currentLesson: .animations),
             BeginnerLesson(id: UUID(), currentLesson: .presentation),
+            BeginnerLesson(id: UUID(), currentLesson: .list),
         ]
     }
 }

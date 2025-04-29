@@ -49,6 +49,8 @@ struct BeginnerLessonDetailView: View {
             AnimationsBootcamp()
         case .presentation:
             PresentationPlayground()
+        case .list:
+            ListBootcamp()
         }
     }
 }
